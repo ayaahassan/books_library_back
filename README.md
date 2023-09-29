@@ -1,6 +1,5 @@
 
 ```tsx
--to run app create database mysql
 -add .env file same as env-example  
 
 ```
