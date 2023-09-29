@@ -1,6 +1,8 @@
 
 ```tsx
--add .env file same as env-example  
+add .env file same as env-example   to run local
+OR
+docker-compose up -d to run by docker docker 
 
 ```
 ## To Run App
