@@ -9,20 +9,36 @@ class DataBase {
     this.dataSource = dataSource;
   }
   async ensureDatabaseExists() {
-    const { database } = this.dataSource.options;
+    // const { database } = this.dataSource.options;
+    // const queryRunner = this.dataSource.createQueryRunner();
+    // try {
+    //   const databases = await queryRunner.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
+    //       } catch (error) {
+    //   console.error('Error ensuring the database exists:', error);
+    // } finally {
+    //   await queryRunner.release();
+    // }
+    let { database } = this.dataSource.options;
     const queryRunner = this.dataSource.createQueryRunner();
+
     try {
-      const databases = await queryRunner.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
-          } catch (error) {
-      console.error('Error ensuring the database exists:', error);
+        // Check if database exists
+        const result = await queryRunner.query(`SHOW DATABASES LIKE ?`, [database]);
+
+        // If it does not exist, then create it
+        if (!result || result.length === 0) {
+            await queryRunner.query(`CREATE DATABASE ${database}`);
+        }
+    } catch (error) {
+        console.error('Error ensuring the database exists:', error);
     } finally {
-      await queryRunner.release();
+        await queryRunner.release();
     }
 }
 
   async connect() {
     try {
-      // await this.ensureDatabaseExists();
+      await this.ensureDatabaseExists();
       await this.dataSource.initialize();
       console.log('Connected to database');
     } catch (error) {

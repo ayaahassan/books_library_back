@@ -1,16 +1,11 @@
 import { Response } from 'express'
 import { Workbook } from "exceljs";
 
-export const  exportToXLSX=async(res: Response, data:any)=> {
+export const  exportToXLSX=async(res: Response, data:any,columns:any)=> {
     let workbook = new Workbook();
     let worksheet = workbook.addWorksheet("Borrowings");
 
-    // Add headers and define columns
-    console.log(data)
-    worksheet.columns = [
-        { header: "ID", key: "id", width: 10 },
-        // ... other columns
-    ];
+    worksheet.columns = columns
 
     data.forEach((row:any) => {
         worksheet.addRow(row);

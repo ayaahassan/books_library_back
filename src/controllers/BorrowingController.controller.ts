@@ -160,12 +160,19 @@ class BorrowingController {
 			},
 			relations: ['book', 'borrower'],
 		})
-
+		const columns = [
+			{ header: 'ID', key: 'id', width: 10 },
+			{ header: 'borrowedOn', key: 'borrowedOn', width: 20 },
+			{ header: 'dueDate', key: 'dueDate', width: 20 },
+			{ header: 'returnedOn', key: 'returnedOn', width: 20 },
+			{ header: 'book', key: 'book', width: 30 },
+			{ header: 'borrower', key: 'borrower', width: 30 },
+		]
 		switch (format) {
 			case 'csv':
 				return exportToCSV(res, borrowings)
 			case 'xlsx':
-				return exportToXLSX(res, borrowings)
+				return exportToXLSX(res, borrowings, columns)
 			default:
 				return res
 					.status(StatusCodes.BAD_REQUEST)
@@ -187,15 +194,16 @@ class BorrowingController {
 		)
 
 		try {
-			const overdueBorrows = await this.borrowingRepo.find({
+			const overdueBorrowings = await this.borrowingRepo.find({
 				where: {
 					borrowedOn: Between(firstDayLastMonth, lastDayLastMonth),
 					returnedOn: IsNull(),
 					dueDate: LessThan(lastDayLastMonth),
 				},
-				relations: ['book', 'borrower'],
+				relations: ['borrower'],
 			})
-			return exportToCSV(res, overdueBorrows)
+			const overdueBorrowers = overdueBorrowings.map(borrow => borrow.borrower);
+			return exportToCSV(res, overdueBorrowers)
 		} catch (error: any) {
 			sendErrorResponse(
 				formatValidationErrors(error),
