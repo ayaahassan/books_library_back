@@ -20,12 +20,18 @@ class BorrowingController {
 		this.borrowingRepo = dataSource.getRepository(Borrowing)
 	}
 	checkOutBook = async (req: Request, res: Response) => {
-		await borrowingValidation.validateAsync(req.body, {
-			abortEarly: false,
-		})
+		// try{
+		// }
+		// catch(error:any)
+		// {
+		// 	console.log(error)
+		// }
 		const { borrowerId, bookId, dueDate } = req.body
 
 		try {
+			await borrowingValidation.validateAsync(req.body, {
+				abortEarly: false,
+			})
 			// Check if the book exists
 			const book = await dataSource
 				.getRepository(Book)
