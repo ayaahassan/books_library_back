@@ -11,8 +11,8 @@ router.patch('/returnBook/:borrowerId/:bookId', BorrowingController.returnBook)
 router.get('/myBooks/:borrowerId', BorrowingController.getCurrentBooks)
 router.get('/overdueBooks', BorrowingController.listOverdueBooks)
 router.get('/report',isAuthenticated,BorrowingController.getBorrowingReport)
-router.get('/overdueBorrows/lastMonth',isAuthenticated,apiLimiter,BorrowingController.exportOverdueBorrowsLastMonth)
-router.get('/borrowingProcesses/lastMonth',isAuthenticated,apiLimiter,BorrowingController.exportBorrowingProcessesLastMonth)
+router.get('/overdueBorrows/lastMonth',isAuthenticated,BorrowingController.exportOverdueBorrowsLastMonth)
+router.get('/borrowingProcesses/lastMonth',isAuthenticated,BorrowingController.exportBorrowingProcessesLastMonth)
 
 
 export default router

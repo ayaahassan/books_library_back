@@ -6,6 +6,7 @@ import configurations from "./src/config/configurations"
 import router from "./src/routes/routes"
 import { runSeeders } from "typeorm-extension"
 import helmet from "helmet"
+import { apiLimiter } from "./src/helpers/constants/apiLimiter"
 
 const app = express()
 app.use(cors({ origin: true, credentials: true }))
@@ -13,6 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(helmet());
+app.use(apiLimiter);
 app.use('/api', router)
 
 
