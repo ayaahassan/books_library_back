@@ -80,34 +80,33 @@ class BorrowingController {
 	}
 
 	returnBook = async (req: Request, res: Response) => {
-		const { borrowerId, bookId } = req.params; // Assuming you're passing them as URL parameters
-	
+		const { borrowerId, bookId } = req.params
+
 		try {
 			const borrowing = await this.borrowingRepo.findOne({
 				where: {
 					borrower: { id: borrowerId as any },
 					book: { id: bookId as any },
-					returnedOn: IsNull() // Only get borrowings that haven't been returned yet
+					returnedOn: IsNull(), // Only get borrowings that haven't been returned yet
 				},
-				relations: ['borrower', 'book'] 
-			});
-	
+				relations: ['borrower', 'book'],
+			})
+
 			if (borrowing) {
-				borrowing.returnedOn = new Date();
-				await this.borrowingRepo.save(borrowing);
-				sendSuccessResponse<Borrowing>(res, borrowing);
+				borrowing.returnedOn = new Date()
+				await this.borrowingRepo.save(borrowing)
+				sendSuccessResponse<Borrowing>(res, borrowing)
 			} else {
-				sendNotFoundResponse(res);
+				sendNotFoundResponse(res)
 			}
 		} catch (error: any) {
 			sendErrorResponse(
 				formatValidationErrors(error),
 				res,
 				StatusCodes.NOT_ACCEPTABLE
-			);
+			)
 		}
 	}
-	
 
 	getCurrentBooks = async (req: Request, res: Response) => {
 		const { borrowerId } = req.params
@@ -210,7 +209,9 @@ class BorrowingController {
 				},
 				relations: ['borrower'],
 			})
-			const overdueBorrowers = overdueBorrowings.map(borrow => borrow.borrower);
+			const overdueBorrowers = overdueBorrowings.map(
+				(borrow) => borrow.borrower
+			)
 			return exportToCSV(res, overdueBorrowers)
 		} catch (error: any) {
 			sendErrorResponse(
@@ -250,9 +251,11 @@ class BorrowingController {
 		}
 	}
 
-	getAll=async(req:Request,res:Response)=>{
+	getAll = async (req: Request, res: Response) => {
 		try {
-			const data = await this.borrowingRepo.find({relations:["book","borrower"]})
+			const data = await this.borrowingRepo.find({
+				relations: ['book', 'borrower'],
+			})
 			sendSuccessResponse<Borrowing[]>(res, data)
 		} catch (error: any) {
 			sendErrorResponse(
