@@ -1,6 +1,6 @@
 import { Router } from "express";
 import BorrowingController from "../../controllers/BorrowingController.controller"
-import { apiLimiter } from "../../helpers/constants/apiLimiter";
+import { apiLimiter } from "../../config/util/apiLimiter";
 import { isAuthenticated } from "../../middleware/isAuthenticated";
 
 const router = Router();
