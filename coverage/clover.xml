@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696013785837" clover="3.2.0">
-  <project timestamp="1696013785837" name="All files">
-    <metrics statements="154" coveredstatements="108" conditionals="49" coveredconditionals="25" methods="39" coveredmethods="18" elements="242" coveredelements="151" complexity="0" loc="154" ncloc="154" packages="8" files="15" classes="15"/>
+<coverage generated="1696024462832" clover="3.2.0">
+  <project timestamp="1696024462832" name="All files">
+    <metrics statements="147" coveredstatements="109" conditionals="46" coveredconditionals="25" methods="38" coveredmethods="18" elements="231" coveredelements="152" complexity="0" loc="147" ncloc="147" packages="8" files="15" classes="15"/>
     <package name="config">
       <metrics statements="3" coveredstatements="3" conditionals="16" coveredconditionals="10" methods="1" coveredmethods="1"/>
       <file name="configurations.ts" path="/home/aya/ITI/Nodejs/bookApp/src/config/configurations.ts">
@@ -12,29 +12,22 @@
       </file>
     </package>
     <package name="config.database">
-      <metrics statements="23" coveredstatements="10" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <metrics statements="16" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="data-source.ts" path="/home/aya/ITI/Nodejs/bookApp/src/config/database/data-source.ts">
-        <metrics statements="20" coveredstatements="7" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <metrics statements="13" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
       </file>
       <file name="database-options.ts" path="/home/aya/ITI/Nodejs/bookApp/src/config/database/database-options.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
