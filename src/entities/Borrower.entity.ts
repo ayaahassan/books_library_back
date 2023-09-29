@@ -8,7 +8,7 @@ import {
 import { Borrowing } from "./Borrowing.entity";
 
 @Entity()
-export class Borrower extends BaseEntity {
+export class Borrower {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -18,7 +18,10 @@ export class Borrower extends BaseEntity {
     @Column()
     email: string;
 
-    @Column({ type: "date" })
+    @Column({
+        type: "timestamp",
+        default: () => "CURRENT_TIMESTAMP"
+    })
     registeredDate: Date;
 
     @OneToMany(() => Borrowing, borrowing => borrowing.borrower)

@@ -7,6 +7,7 @@ import { any } from "joi";
 import { updateBookValidation } from "../helpers/validations/books/update-book.validation";
 import { sendSuccessResponse } from "../helpers/responses/sendSuccessResponse";
 import { Like } from "typeorm";
+import { StatusCodes } from "../helpers/constants/statusCodes";
 
 class BookController extends BaseController<Book> {
   constructor() {
@@ -31,7 +32,7 @@ class BookController extends BaseController<Book> {
       return await this.create(req, res);
     }
     catch (validationError: any) {
-      res.status(400).json({
+      res.status(StatusCodes.BAD_REQUEST).json({
         status: 'error',
         message: validationError.details.map((detail: any) => detail.message)
       });
@@ -49,7 +50,7 @@ class BookController extends BaseController<Book> {
       return await this.update(req, res);
     }
     catch (validationError: any) {
-      res.status(400).json({
+      res.status(StatusCodes.BAD_REQUEST).json({
         status: 'error',
         message: validationError.details.map((detail: any) => detail.message)
       });

@@ -9,5 +9,6 @@ interface IDataSourceOptions {
 export interface IConfigInterface {
 	port: string | number
 	database: IDataSourceOptions
+	secret:string
 	websiteUrl: string
 }

@@ -9,6 +9,10 @@ import { ValidationError } from 'joi'
 import { Borrower } from '../entities/Borrower.entity'
 import { exportToCSV } from '../helpers/methods/exportToCSV'
 import { exportToXLSX } from '../helpers/methods/exportToXLSX'
+import { sendNotFoundResponse } from '../helpers/responses/404.response'
+import { sendErrorResponse } from '../helpers/responses/sendErrorResponse'
+import { formatValidationErrors } from '../helpers/methods/formatValidationErrors'
+import { StatusCodes } from '../helpers/constants/statusCodes'
 
 class BorrowingController {
 	borrowingRepo: Repository<Borrowing>
@@ -27,7 +31,7 @@ class BorrowingController {
 				.getRepository(Book)
 				.findOne({ where: { id: bookId } })
 			if (!book) {
-				return res.status(404).json({ error: 'Book not found' })
+				sendNotFoundResponse(res)
 			}
 
 			// Check how many copies of the book are currently borrowed and not yet returned
@@ -39,16 +43,16 @@ class BorrowingController {
 			})
 
 			// Check if there are available copies to borrow
-			if (book.quantity <= currentlyBorrowedCount) {
+			if (book && book.quantity <= currentlyBorrowedCount) {
 				return res
-					.status(400)
+					.status(StatusCodes.BAD_REQUEST)
 					.json({ error: 'All copies of the book are currently borrowed' })
 			}
 			const borrower = await dataSource
 				.getRepository(Borrower)
 				.findOne({ where: { id: borrowerId } })
 			if (!borrower) {
-				return res.status(404).json({ error: 'Borrower not found' })
+				sendNotFoundResponse(res)
 			}
 			// If all checks pass, proceed to borrow the book
 			const newBorrowing = this.borrowingRepo.create({
@@ -66,7 +70,11 @@ class BorrowingController {
 					message: error.details.map((detail) => detail.message),
 				})
 			} else {
-				res.status(500).json({ error: error })
+				sendErrorResponse(
+					formatValidationErrors(error as any),
+					res,
+					StatusCodes.NOT_ACCEPTABLE
+				)
 			}
 		}
 	}
@@ -82,10 +90,14 @@ class BorrowingController {
 				await this.borrowingRepo.save(borrowing)
 				sendSuccessResponse<Borrowing>(res, borrowing)
 			} else {
-				res.status(404).json({ error: 'Borrowing not found' })
+				sendNotFoundResponse(res)
 			}
 		} catch (error: any) {
-			res.status(500).json({ error: error.message })
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
 		}
 	}
 
@@ -102,7 +114,11 @@ class BorrowingController {
 			const books = currentBooks.map((borrowing) => borrowing.book)
 			sendSuccessResponse<Book[]>(res, books)
 		} catch (error: any) {
-			res.status(500).json({ error: error.message })
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
 		}
 	}
 
@@ -117,7 +133,11 @@ class BorrowingController {
 			})
 			sendSuccessResponse<Borrowing[]>(res, overdueBooks)
 		} catch (error: any) {
-			res.status(500).json({ error: error.message })
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
 		}
 	}
 
@@ -131,7 +151,7 @@ class BorrowingController {
 			typeof endDate !== 'string'
 		) {
 			return res
-				.status(400)
+				.status(StatusCodes.BAD_REQUEST)
 				.json({ error: 'Please provide both startDate and endDate' })
 		}
 		const borrowings = await this.borrowingRepo.find({
@@ -147,11 +167,12 @@ class BorrowingController {
 			case 'xlsx':
 				return exportToXLSX(res, borrowings)
 			default:
-				return res.status(400).json({ error: 'Unsupported format' })
+				return res
+					.status(StatusCodes.BAD_REQUEST)
+					.json({ error: 'Unsupported format' })
 		}
 	}
 
-    
 	exportOverdueBorrowsLastMonth = async (req: Request, res: Response) => {
 		const currentDate = new Date()
 		const firstDayLastMonth = new Date(
@@ -176,7 +197,11 @@ class BorrowingController {
 			})
 			return exportToCSV(res, overdueBorrows)
 		} catch (error: any) {
-			res.status(500).json({ error: error.message })
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
 		}
 	}
 	exportBorrowingProcessesLastMonth = async (req: Request, res: Response) => {
@@ -201,7 +226,11 @@ class BorrowingController {
 			})
 			return exportToCSV(res, borrowingProcesses)
 		} catch (error: any) {
-			res.status(500).json({ error: error.message })
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
 		}
 	}
 }

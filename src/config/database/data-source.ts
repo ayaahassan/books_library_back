@@ -8,8 +8,21 @@ class DataBase {
   constructor(dataSource: DataSource) {
     this.dataSource = dataSource;
   }
+  async ensureDatabaseExists() {
+    const { database } = this.dataSource.options;
+    const queryRunner = this.dataSource.createQueryRunner();
+    try {
+      const databases = await queryRunner.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
+          } catch (error) {
+      console.error('Error ensuring the database exists:', error);
+    } finally {
+      await queryRunner.release();
+    }
+}
+
   async connect() {
     try {
+      // await this.ensureDatabaseExists();
       await this.dataSource.initialize();
       console.log('Connected to database');
     } catch (error) {

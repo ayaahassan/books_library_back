@@ -12,6 +12,7 @@ export default (): IConfigInterface => ({
 		password: process.env.DATABASE_PASS,
 		name: process.env.DATABASE_NAME,
 	},
+	secret: process.env.SECRET_KEY ?? 'secret',
 	websiteUrl: process.env.WEBSITE_URL ?? 'http://localhost:3000',
 
 })

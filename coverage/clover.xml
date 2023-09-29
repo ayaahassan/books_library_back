@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695933188513" clover="3.2.0">
-  <project timestamp="1695933188513" name="All files">
-    <metrics statements="140" coveredstatements="84" conditionals="35" coveredconditionals="14" methods="35" coveredmethods="9" elements="210" coveredelements="107" complexity="0" loc="140" ncloc="140" packages="7" files="12" classes="12"/>
+<coverage generated="1695996298052" clover="3.2.0">
+  <project timestamp="1695996298052" name="All files">
+    <metrics statements="144" coveredstatements="114" conditionals="42" coveredconditionals="25" methods="37" coveredmethods="21" elements="223" coveredelements="160" complexity="0" loc="144" ncloc="144" packages="8" files="15" classes="15"/>
     <package name="config">
       <metrics statements="3" coveredstatements="3" conditionals="12" coveredconditionals="7" methods="1" coveredmethods="1"/>
       <file name="configurations.ts" path="/home/aya/ITI/Nodejs/bookApp/src/config/configurations.ts">
@@ -35,85 +35,81 @@
       </file>
     </package>
     <package name="controllers">
-      <metrics statements="73" coveredstatements="26" conditionals="11" coveredconditionals="0" methods="21" coveredmethods="6"/>
+      <metrics statements="69" coveredstatements="49" conditionals="10" coveredconditionals="4" methods="19" coveredmethods="15"/>
       <file name="BaseController.controller.ts" path="/home/aya/ITI/Nodejs/bookApp/src/controllers/BaseController.controller.ts">
-        <metrics statements="33" coveredstatements="6" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <metrics statements="38" coveredstatements="25" conditionals="8" coveredconditionals="4" methods="6" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="63" count="0" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
       </file>
-      <file name="BookController.controller.ts" path="/home/aya/ITI/Nodejs/bookApp/src/controllers/BookController.controller.ts">
-        <metrics statements="40" coveredstatements="20" conditionals="3" coveredconditionals="0" methods="15" coveredmethods="4"/>
+      <file name="BorrowerController.controller.ts" path="/home/aya/ITI/Nodejs/bookApp/src/controllers/BorrowerController.controller.ts">
+        <metrics statements="31" coveredstatements="24" conditionals="2" coveredconditionals="0" methods="13" coveredmethods="10"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
         <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="70" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="74" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="87" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
       </file>
     </package>
     <package name="entities">
@@ -176,27 +172,47 @@
         <line num="10" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="helpers.responses">
-      <metrics statements="3" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="sendSuccessResponse.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/responses/sendSuccessResponse.ts">
-        <metrics statements="3" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="9" count="0" type="cond" truecount="0" falsecount="4"/>
+    <package name="helpers.methods">
+      <metrics statements="3" coveredstatements="2" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="1"/>
+      <file name="formatValidationErrors.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/methods/formatValidationErrors.ts">
+        <metrics statements="3" coveredstatements="2" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="4" falsecount="2"/>
+        <line num="5" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="helpers.validations.books">
+    <package name="helpers.responses">
+      <metrics statements="8" coveredstatements="7" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <file name="404.response.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/responses/404.response.ts">
+        <metrics statements="3" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="sendErrorResponse.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/responses/sendErrorResponse.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="sendSuccessResponse.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/responses/sendSuccessResponse.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="3" falsecount="1"/>
+      </file>
+    </package>
+    <package name="helpers.validations.borrower">
       <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="0"/>
-      <file name="book.validation.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/validations/books/book.validation.ts">
+      <file name="borrower.validation.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/validations/borrower/borrower.validation.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
       </file>
-      <file name="update-book.validation.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/validations/books/update-book.validation.ts">
+      <file name="update-borrower.validation.ts" path="/home/aya/ITI/Nodejs/bookApp/src/helpers/validations/borrower/update-borrower.validation.ts">
         <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="12" count="1" type="cond" truecount="5" falsecount="1"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="5" falsecount="1"/>
+        <line num="8" count="1" type="stmt"/>
       </file>
     </package>
   </project>

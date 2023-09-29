@@ -7,7 +7,6 @@ import {
 } from "typeorm";
 import { Book } from "./Book.entity";
 import { Borrower } from "./Borrower.entity";
-import { Base } from "./Base";
 
 @Entity()
 export class Borrowing extends BaseEntity{
