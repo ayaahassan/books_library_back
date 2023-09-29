@@ -30,6 +30,7 @@ class DataBase {
             await queryRunner.query(`CREATE DATABASE ${database}`);
         }
     } catch (error) {
+        
         console.error('Error ensuring the database exists:', error);
     } finally {
         await queryRunner.release();
@@ -38,7 +39,7 @@ class DataBase {
 
   async connect() {
     try {
-      await this.ensureDatabaseExists();
+      // await this.ensureDatabaseExists();
       await this.dataSource.initialize();
       console.log('Connected to database');
     } catch (error) {

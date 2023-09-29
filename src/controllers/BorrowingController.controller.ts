@@ -80,26 +80,34 @@ class BorrowingController {
 	}
 
 	returnBook = async (req: Request, res: Response) => {
-		const { id } = req.params
+		const { borrowerId, bookId } = req.params; // Assuming you're passing them as URL parameters
+	
 		try {
 			const borrowing = await this.borrowingRepo.findOne({
-				where: { id: id as any },
-			})
+				where: {
+					borrower: { id: borrowerId as any },
+					book: { id: bookId as any },
+					returnedOn: IsNull() // Only get borrowings that haven't been returned yet
+				},
+				relations: ['borrower', 'book'] 
+			});
+	
 			if (borrowing) {
-				borrowing.returnedOn = new Date()
-				await this.borrowingRepo.save(borrowing)
-				sendSuccessResponse<Borrowing>(res, borrowing)
+				borrowing.returnedOn = new Date();
+				await this.borrowingRepo.save(borrowing);
+				sendSuccessResponse<Borrowing>(res, borrowing);
 			} else {
-				sendNotFoundResponse(res)
+				sendNotFoundResponse(res);
 			}
 		} catch (error: any) {
 			sendErrorResponse(
 				formatValidationErrors(error),
 				res,
 				StatusCodes.NOT_ACCEPTABLE
-			)
+			);
 		}
 	}
+	
 
 	getCurrentBooks = async (req: Request, res: Response) => {
 		const { borrowerId } = req.params
@@ -233,6 +241,19 @@ class BorrowingController {
 				relations: ['book', 'borrower'],
 			})
 			return exportToCSV(res, borrowingProcesses)
+		} catch (error: any) {
+			sendErrorResponse(
+				formatValidationErrors(error),
+				res,
+				StatusCodes.NOT_ACCEPTABLE
+			)
+		}
+	}
+
+	getAll=async(req:Request,res:Response)=>{
+		try {
+			const data = await this.borrowingRepo.find({relations:["book","borrower"]})
+			sendSuccessResponse<Borrowing[]>(res, data)
 		} catch (error: any) {
 			sendErrorResponse(
 				formatValidationErrors(error),

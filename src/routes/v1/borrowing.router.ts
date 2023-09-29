@@ -5,8 +5,9 @@ import { isAuthenticated } from "../../middleware/isAuthenticated";
 
 const router = Router();
 
+router.get('/', BorrowingController.getAll)
 router.post('/', BorrowingController.checkOutBook)
-router.patch('/returnBook/:id', BorrowingController.returnBook)
+router.patch('/returnBook/:borrowerId/:bookId', BorrowingController.returnBook)
 router.get('/myBooks/:borrowerId', BorrowingController.getCurrentBooks)
 router.get('/overdueBooks', BorrowingController.listOverdueBooks)
 router.get('/report',isAuthenticated,BorrowingController.getBorrowingReport)
