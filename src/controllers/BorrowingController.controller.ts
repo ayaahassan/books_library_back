@@ -20,12 +20,7 @@ class BorrowingController {
 		this.borrowingRepo = dataSource.getRepository(Borrowing)
 	}
 	checkOutBook = async (req: Request, res: Response) => {
-		// try{
-		// }
-		// catch(error:any)
-		// {
-		// 	console.log(error)
-		// }
+		
 		const { borrowerId, bookId, dueDate } = req.body
 
 		try {

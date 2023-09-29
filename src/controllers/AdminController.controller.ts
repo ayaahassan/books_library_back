@@ -5,8 +5,13 @@ import { sendNotFoundResponse } from '../helpers/responses/404.response'
 import { sendAuthenticationResponse } from '../helpers/responses/sendAuthenticationResponse'
 import { adminValidation } from '../helpers/validations/admin/admin.validation'
 import { StatusCodes } from '../helpers/constants/statusCodes'
+import { sendErrorResponse } from '../helpers/responses/sendErrorResponse'
+import { formatValidationErrors } from '../helpers/methods/formatValidationErrors'
+import { ValidationError } from 'joi'
+
 class AdminController {
 	Login = async (req: Request, res: Response) => {
+    try{
     await adminValidation.validateAsync(
       req.body,
       {
@@ -24,6 +29,22 @@ class AdminController {
 		} else {
 			sendNotFoundResponse(res)
 		}
+  }
+  catch(error)
+  {
+    if (error instanceof ValidationError) {
+      res.status(400).json({
+        status: 'error',
+        message: error.details.map((detail) => detail.message),
+      })
+    } else {
+      sendErrorResponse(
+        formatValidationErrors(error as any),
+        res,
+        StatusCodes.NOT_ACCEPTABLE
+      )
+    }
+  }
 	}
 
   Register = async (req:Request, res:Response) => {
@@ -45,9 +66,19 @@ class AdminController {
        else { res.status(400).json({ success: false, data: "email should be unique" }) }
  
     }
-    catch (e:any) {
-       res.status(StatusCodes.NOT_ACCEPTABLE).json(e.message)
- 
+    catch (error) {
+      if (error instanceof ValidationError) {
+        res.status(400).json({
+          status: 'error',
+          message: error.details.map((detail) => detail.message),
+        })
+      } else {
+        sendErrorResponse(
+          formatValidationErrors(error as any),
+          res,
+          StatusCodes.NOT_ACCEPTABLE
+        )
+      } 
     }
  
  }
