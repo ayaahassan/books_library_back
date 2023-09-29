@@ -1,7 +1,7 @@
 
 ```tsx
 -to run app create database mysql
--update env file 
+-add .env file same as env-example  
 
 ```
 ## To Run TestCases
@@ -17,6 +17,7 @@ email:admin@mail.com
 password:123456
 
 for only  routes 
+
 -/borrowings/report
 -/borrowings/overdueBorrows/lastMonth
 -/borrowingProcesses/lastMonth
