@@ -4,9 +4,6 @@
 -add .env file same as env-example  
 
 ```
-## To Run TestCases
-> npm test
- 
 ## To Run App
 > npm run start
   
@@ -23,5 +20,8 @@ for only  routes
 -/borrowingProcesses/lastMonth
 need authentication (token in headers)
 ```
+## To Run TestCases
+> npm test
+ 
 
 
