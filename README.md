@@ -1,8 +1,7 @@
 
 ```tsx
 add .env file same as env-example   to run local
-OR
-docker-compose up -d to run by docker 
+
 ```
 ## To Run App
 > npm run start
